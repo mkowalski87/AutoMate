@@ -1,4 +1,4 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.9
 
 import PackageDescription
 
@@ -15,6 +15,7 @@ let package = Package(
     targets: [
         .target(
             name: "AutoMate",
-            path: "AutoMate")
+            path: "AutoMate",
+            resources: [.process("Models/Messages")])
     ]
 )

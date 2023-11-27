@@ -153,6 +153,17 @@ public struct CalendarAlert: SystemAlert, SystemAlertAllow, SystemAlertDeny {
 
         self.alert = element
     }
+
+    /// Allow element.
+    ///
+    @available(iOS 17, *)
+    public var allowElement: XCUIElement {
+        guard let button = alert.buttons.elements(withLabelsMatching: ["Pełny dostęp"]).first else {
+            preconditionFailure("Cannot find allow button.")
+        }
+
+        return button
+    }
 }
 
 /// Represents `CallsAlert` service alert.

@@ -15,6 +15,10 @@ extension Bundle {
 
     /// AutoMate framework bundle
     public class var autoMate: Bundle {
+        #if SWIFT_PACKAGE
+           return Bundle.module
+        #endif
+
         guard let bundle = Bundle(identifier: autoMateIdentifier) else {
             preconditionFailure("Cannot find allow button.")
         }
