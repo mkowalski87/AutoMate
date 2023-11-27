@@ -156,9 +156,12 @@ public struct CalendarAlert: SystemAlert, SystemAlertAllow, SystemAlertDeny {
 
     /// Allow element.
     ///
-    @available(iOS 17, *)
     public var allowElement: XCUIElement {
-        guard let button = alert.buttons.elements(withLabelsMatching: ["Pełny dostęp"]).first else {
+        var text = type(of: self).allow
+        if #available(iOS 17, *) {
+            text.append(contentsOf: ["Pełny dostęp", "Allow Full Access"])
+        }
+        guard let button = alert.buttons.elements(withLabelsMatching: text).first else {
             preconditionFailure("Cannot find allow button.")
         }
 
